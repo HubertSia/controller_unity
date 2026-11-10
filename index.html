@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Pixel Controller</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <main class="controller">
+        <div class="pixel-grid" aria-hidden="true"></div>
+
+        <header class="top-bar">
+            <button class="corner-button" data-action="help" aria-label="Help">
+                ?
+            </button>
+            <div class="brand">PIXEL PAD <span>01</span></div>
+            <button class="corner-button" data-action="quit" aria-label="Disconnect">
+                X
+            </button>
+        </header>
+
+        <div class="connection">
+            <label for="server-url">SERVER</label>
+            <input id="server-url" type="text" inputmode="url" spellcheck="false"
+                placeholder="ws://192.168.1.10:8080" />
+            <button id="connect-button" type="button">CONNECT</button>
+            <output id="status" aria-live="polite">Disconnected</output>
+        </div>
+
+        <div class="play-area">
+            <div class="dpad" aria-label="Directional pad">
+                <button class="direction up" data-control="up" aria-label="Up">
+                    ▲
+                </button>
+                <button class="direction down" data-control="down" aria-label="Down">
+                    ▼
+                </button>
+                <button class="direction left" data-control="left" aria-label="Left">
+                    ◀
+                </button>
+                <button class="direction right" data-control="right" aria-label="Right">
+                    ▶
+                </button>
+                <div class="dpad-center" aria-hidden="true"></div>
+            </div>
+
+            <div class="mascot" aria-hidden="true">
+                <div class="mascot-eyes"><span></span><span></span></div>
+                <div class="mascot-mouth"></div>
+            </div>
+
+            <div class="actions" aria-label="Action buttons">
+                <button class="action-button a" data-control="buttonA">A</button>
+                <button class="action-button b" data-control="buttonB">B</button>
+            </div>
+        </div>
+
+        <div class="bottom-label">PLAYER 1 // READY</div>
+    </main>
+
+    <script src="controller.js"></script>
+</body>
+
+</html>

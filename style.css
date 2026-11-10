@@ -1,0 +1,288 @@
+:root {
+    --background: #d7cfeb;
+    --ink: #242033;
+    --panel: #eee9f8;
+    --button: #615b77;
+    --button-pressed: #a069bc;
+    --accent: #7651a3;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    width: 100%;
+    min-height: 100dvh;
+    margin: 0;
+    overflow: hidden;
+    background: var(--background);
+    color: var(--ink);
+    font-family: "Courier New", monospace;
+}
+
+button {
+    font: inherit;
+    cursor: pointer;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+button:focus-visible,
+input:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.controller {
+    position: relative;
+    width: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    background: var(--background);
+}
+
+.pixel-grid {
+    position: absolute;
+    inset: 0;
+    opacity: 0.34;
+    pointer-events: none;
+    background-image:
+        linear-gradient(#b7a9d1 1px, transparent 1px),
+        linear-gradient(90deg, #b7a9d1 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.top-bar {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: max(10px, env(safe-area-inset-top)) 16px 0;
+}
+
+.corner-button,
+#connect-button {
+    border: 3px solid var(--ink);
+    border-radius: 0;
+    background: var(--panel);
+    color: var(--ink);
+    box-shadow: 4px 4px 0 var(--ink);
+    font-weight: 900;
+}
+
+.corner-button {
+    width: 42px;
+    height: 42px;
+    font-size: 22px;
+}
+
+.brand {
+    font-size: clamp(15px, 2.4vw, 25px);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.brand span {
+    color: var(--accent);
+}
+
+.connection {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px auto 0;
+    padding: 0 16px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.connection input {
+    width: min(34vw, 260px);
+    min-width: 165px;
+    height: 32px;
+    padding: 4px 8px;
+    border: 2px solid var(--ink);
+    border-radius: 0;
+    background: var(--panel);
+    color: var(--ink);
+    font: inherit;
+}
+
+#connect-button {
+    min-height: 32px;
+    padding: 3px 10px;
+}
+
+#status {
+    min-width: 105px;
+    text-transform: uppercase;
+}
+
+.play-area {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 132px);
+    min-height: 170px;
+}
+
+.dpad {
+    position: absolute;
+    top: 50%;
+    left: 8%;
+    width: min(32vw, 42vh);
+    aspect-ratio: 1;
+    transform: translateY(-50%);
+    filter: drop-shadow(5px 5px 0 var(--ink));
+}
+
+.direction {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 34%;
+    height: 34%;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: var(--button);
+    color: white;
+    font-size: clamp(14px, 3vw, 27px);
+    font-weight: bold;
+}
+
+.up {
+    top: 0;
+    left: 33%;
+}
+
+.down {
+    bottom: 0;
+    left: 33%;
+}
+
+.left {
+    top: 33%;
+    left: 0;
+}
+
+.right {
+    top: 33%;
+    right: 0;
+}
+
+.dpad-center {
+    position: absolute;
+    top: 33%;
+    left: 33%;
+    width: 34%;
+    height: 34%;
+    background: var(--button);
+    pointer-events: none;
+}
+
+.direction.pressed,
+.action-button.pressed {
+    background: var(--button-pressed);
+    color: var(--ink);
+}
+
+.mascot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(42px, 9vw, 90px);
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    border: 5px solid var(--ink);
+    background: #f9dc88;
+    box-shadow: 5px 5px 0 var(--ink);
+    image-rendering: pixelated;
+}
+
+.mascot-eyes {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 24%;
+}
+
+.mascot-eyes span {
+    width: 10%;
+    height: 13px;
+    background: var(--ink);
+}
+
+.mascot-mouth {
+    width: 35%;
+    height: 12%;
+    margin: 18% auto 0;
+    border: 5px solid var(--ink);
+    border-top: 0;
+}
+
+.actions {
+    position: absolute;
+    top: 50%;
+    right: 8%;
+    width: min(28vw, 38vh);
+    height: min(28vw, 38vh);
+    transform: translateY(-50%);
+}
+
+.action-button {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 43%;
+    aspect-ratio: 1;
+    border: 4px solid var(--ink);
+    border-radius: 0;
+    background: var(--button);
+    color: white;
+    box-shadow: 5px 5px 0 var(--ink);
+    font-size: clamp(24px, 5vw, 48px);
+    font-weight: 900;
+}
+
+.action-button.a {
+    top: 0;
+    right: 0;
+}
+
+.action-button.b {
+    bottom: 0;
+    left: 0;
+}
+
+.bottom-label {
+    position: absolute;
+    right: 18px;
+    bottom: max(9px, env(safe-area-inset-bottom));
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+}
+
+@media (orientation: portrait) {
+    .controller {
+        display: none;
+    }
+
+    body::after {
+        content: "ROTATE YOUR PHONE TO PLAY";
+        position: fixed;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+        text-align: center;
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
