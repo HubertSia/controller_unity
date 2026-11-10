@@ -1,9 +1,9 @@
 :root {
-    --background: #d7cfeb;
+    --background: #cfebd8;
     --ink: #242033;
-    --panel: #eee9f8;
-    --button: #615b77;
-    --button-pressed: #57886c;
+    --panel: #ecf8e9;
+    --button: #4b694e;
+    --button-pressed: #8bc2a3;
     --accent: #81a684;
 }
 
