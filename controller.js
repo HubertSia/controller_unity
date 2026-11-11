@@ -7,12 +7,14 @@ const controls = new Set([
   "buttonB",
 ]);
 
-const input = document.querySelector("#server-url");
-const status = document.querySelector("#status");
-const connectButton = document.querySelector("#connect-button");
+//const input = document.querySelector("#server-url");
+//const status = document.querySelector("#status");
+//const connectButton = document.querySelector("#connect-button");
 
-const storedUrl = localStorage.getItem("controller-server");
-input.value = storedUrl || `ws://${location.hostname || "localhost"}:8080`;
+//const storedUrl = localStorage.getItem("controller-server");
+//input.value = storedUrl || `ws://${location.hostname || "localhost"}:8080`;
+
+const serverUrl = "ws://192.168.1.10:8080";
 
 let socket = null;
 const activePointers = new Map();
@@ -39,7 +41,8 @@ function releaseAll() {
 }
 
 function connect() {
-  const url = input.value.trim();
+  const url = serverUrl;
+
 
   if (!/^wss?:\/\/.+/i.test(url)) {
     setStatus("Invalid URL");
@@ -53,7 +56,6 @@ function connect() {
     socket.close();
   }
 
-  localStorage.setItem("controller-server", url);
   setStatus("Connecting");
 
   const connection = new WebSocket(url);
@@ -84,7 +86,6 @@ connectButton.addEventListener("click", connect);
 input.addEventListener("keydown", (event) => {
   if (event.key === "Enter") {
     input.blur();
-    connect();
   }
 });
 
