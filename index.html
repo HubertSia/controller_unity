@@ -13,52 +13,100 @@
         <div class="pixel-grid" aria-hidden="true"></div>
 
         <header class="top-bar">
-            <button class="corner-button" data-action="help" aria-label="Help">
+            <button class="corner-button" type="button" data-action="help" aria-label="Open tutorial">
                 ?
             </button>
+
             <div class="brand">PIXEL PAD <span>01</span></div>
-            <button class="corner-button" data-action="quit" aria-label="Disconnect">
+
+            <button class="corner-button" type="button" data-action="quit" aria-label="Disconnect">
                 X
             </button>
         </header>
 
-<!--        <div class="connection">
-            <label for="server-url">SERVER</label>
-            <input id="server-url" type="text" inputmode="url" spellcheck="false"
-                placeholder="ws://192.168.1.10:8080" />
-            <button id="connect-button" type="button">CONNECT</button>
-            <output id="status" aria-live="polite">Disconnected</output>
-        </div>-->
-
         <div class="play-area">
-            <div class="dpad" aria-label="Directional pad">
-                <button class="direction up" data-control="up" aria-label="Up">
+            <div class="dpad" role="group" aria-label="Directional pad">
+                <button class="direction up" type="button" data-control="up" aria-label="Up">
                     ▲
                 </button>
-                <button class="direction down" data-control="down" aria-label="Down">
+                <button class="direction down" type="button" data-control="down" aria-label="Down">
                     ▼
                 </button>
-                <button class="direction left" data-control="left" aria-label="Left">
+                <button class="direction left" type="button" data-control="left" aria-label="Left">
                     ◀
                 </button>
-                <button class="direction right" data-control="right" aria-label="Right">
+                <button class="direction right" type="button" data-control="right" aria-label="Right">
                     ▶
                 </button>
             </div>
 
-            <div class="mascot" aria-hidden="true">
+            <div class="mascot" data-avatar role="img" aria-label="Your avatar">
                 <div class="mascot-eyes"><span></span><span></span></div>
                 <div class="mascot-mouth"></div>
             </div>
 
-            <div class="actions" aria-label="Action buttons">
-                <button class="action-button a" data-control="buttonA">A</button>
-                <button class="action-button b" data-control="buttonB">B</button>
+            <div class="actions" role="group" aria-label="Action buttons">
+                <button class="action-button a" type="button" data-control="buttonA">
+                    A
+                </button>
+                <button class="action-button b" type="button" data-control="buttonB">
+                    B
+                </button>
             </div>
         </div>
 
-        <div class="bottom-label">PLAYER 1 // READY</div>
+        <div class="bottom-label" id="player-status">PLAYER 1 // READY</div>
     </main>
+
+    <dialog class="game-dialog tutorial-dialog" id="tutorial-dialog">
+        <div class="dialog-header">
+            <span class="dialog-kicker">HOW TO PLAY</span>
+            <button class="dialog-close" type="button" data-action="close-tutorial" aria-label="Close tutorial">
+                ×
+            </button>
+        </div>
+
+        <div class="dialog-content">
+            <p class="step-count" id="tutorial-progress"></p>
+            <h2 id="tutorial-title"></h2>
+            <div class="tutorial-visual" id="tutorial-visual" aria-hidden="true">
+                <!-- Replace this placeholder with game artwork later. -->
+            </div>
+            <p id="tutorial-text"></p>
+        </div>
+
+        <div class="dialog-footer">
+            <button class="dialog-button secondary" type="button" data-action="previous-step">
+                Back
+            </button>
+            <button class="dialog-button" type="button" data-action="next-step">
+                Next
+            </button>
+        </div>
+    </dialog>
+
+    <dialog class="game-dialog" id="quit-dialog">
+        <div class="dialog-header">
+            <span class="dialog-kicker">LEAVE GAME</span>
+            <button class="dialog-close" type="button" data-action="close-quit" aria-label="Close disconnect dialog">
+                ×
+            </button>
+        </div>
+
+        <div class="dialog-content">
+            <h2>Disconnect?</h2>
+            <p>Are you sure you want to leave this game?</p>
+        </div>
+
+        <div class="dialog-footer">
+            <button class="dialog-button secondary" type="button" data-action="cancel-quit">
+                No, stay
+            </button>
+            <button class="dialog-button" type="button" data-action="confirm-quit">
+                Yes, leave
+            </button>
+        </div>
+    </dialog>
 
     <script src="controller.js"></script>
 </body>
