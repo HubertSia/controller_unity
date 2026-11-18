@@ -1,0 +1,3 @@
+- Highlight player's avatar
+- Highlight other players
+- Zoom map feature
