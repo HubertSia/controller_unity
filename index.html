@@ -26,85 +26,88 @@
 
         <div class="play-area">
             <div class="dpad" role="group" aria-label="Directional pad">
-                <button class="direction up" type="button" data-control="up" aria-label="Up">
-                    ▲
-                </button>
-                <button class="direction down" type="button" data-control="down" aria-label="Down">
-                    ▼
-                </button>
-                <button class="direction left" type="button" data-control="left" aria-label="Left">
-                    ◀
-                </button>
-                <button class="direction right" type="button" data-control="right" aria-label="Right">
-                    ▶
-                </button>
+                <button class="direction up" type="button" data-control="up" aria-label="Up">▲</button>
+                <button class="direction down" type="button" data-control="down" aria-label="Down">▼</button>
+                <button class="direction left" type="button" data-control="left" aria-label="Left">◀</button>
+                <button class="direction right" type="button" data-control="right" aria-label="Right">▶</button>
             </div>
 
-            <div class="mascot" data-avatar role="img" aria-label="Your avatar">
+            <div class="mascot" data-avatar role="button" tabindex="0"
+                aria-label="Your avatar. Hold to highlight yourself.">
                 <div class="mascot-eyes"><span></span><span></span></div>
                 <div class="mascot-mouth"></div>
             </div>
 
             <div class="actions" role="group" aria-label="Action buttons">
-                <button class="action-button a" type="button" data-control="buttonA">
-                    A
-                </button>
-                <button class="action-button b" type="button" data-control="buttonB">
-                    B
-                </button>
+                <button class="action-button a" type="button" data-control="buttonA">A</button>
+                <button class="action-button b" type="button" data-control="buttonB">B</button>
             </div>
+
+            <div class="peek-catcher" data-peek-catcher aria-hidden="true"></div>
+
+            <button class="map-button" type="button" data-action="open-map" aria-label="Open map">
+                MAP
+            </button>
         </div>
 
         <div class="bottom-label" id="player-status">PLAYER 1 // READY</div>
     </main>
 
+    <div class="map-overlay" data-map-overlay hidden>
+        <div class="map-sheet" role="dialog" aria-modal="true" aria-label="Map">
+            <div class="map-header">
+                <span class="dialog-kicker">MAP</span>
+                <button class="dialog-close" type="button" data-action="close-map" aria-label="Close map">×</button>
+            </div>
+
+            <div class="map-viewport">
+                <div class="map-layer" data-map-layer>
+                    <div class="map-grid"></div>
+                    <div class="map-marker you" data-map-you>YOU</div>
+                    <div class="map-players" data-map-players></div>
+                </div>
+            </div>
+
+            <div class="zoom-controls" role="group" aria-label="Map zoom">
+                <button type="button" class="zoom-button" data-action="zoom-out" aria-label="Zoom out">–</button>
+                <span class="zoom-level" data-zoom-level>100%</span>
+                <button type="button" class="zoom-button" data-action="zoom-in" aria-label="Zoom in">+</button>
+                <button type="button" class="zoom-button" data-action="zoom-reset" aria-label="Reset zoom">⤢</button>
+            </div>
+        </div>
+    </div>
+
     <dialog class="game-dialog tutorial-dialog" id="tutorial-dialog">
         <div class="dialog-header">
             <span class="dialog-kicker">HOW TO PLAY</span>
-            <button class="dialog-close" type="button" data-action="close-tutorial" aria-label="Close tutorial">
-                ×
-            </button>
+            <button class="dialog-close" type="button" data-action="close-tutorial"
+                aria-label="Close tutorial">×</button>
         </div>
-
         <div class="dialog-content">
             <p class="step-count" id="tutorial-progress"></p>
             <h2 id="tutorial-title"></h2>
-            <div class="tutorial-visual" id="tutorial-visual" aria-hidden="true">
-                <!-- Replace this placeholder with game artwork later. -->
-            </div>
+            <div class="tutorial-visual" id="tutorial-visual" aria-hidden="true"></div>
             <p id="tutorial-text"></p>
         </div>
-
         <div class="dialog-footer">
-            <button class="dialog-button secondary" type="button" data-action="previous-step">
-                Back
-            </button>
-            <button class="dialog-button" type="button" data-action="next-step">
-                Next
-            </button>
+            <button class="dialog-button secondary" type="button" data-action="previous-step">Back</button>
+            <button class="dialog-button" type="button" data-action="next-step">Next</button>
         </div>
     </dialog>
 
     <dialog class="game-dialog" id="quit-dialog">
         <div class="dialog-header">
             <span class="dialog-kicker">LEAVE GAME</span>
-            <button class="dialog-close" type="button" data-action="close-quit" aria-label="Close disconnect dialog">
-                ×
-            </button>
+            <button class="dialog-close" type="button" data-action="close-quit"
+                aria-label="Close disconnect dialog">×</button>
         </div>
-
         <div class="dialog-content">
             <h2>Disconnect?</h2>
             <p>Are you sure you want to leave this game?</p>
         </div>
-
         <div class="dialog-footer">
-            <button class="dialog-button secondary" type="button" data-action="cancel-quit">
-                No, stay
-            </button>
-            <button class="dialog-button" type="button" data-action="confirm-quit">
-                Yes, leave
-            </button>
+            <button class="dialog-button secondary" type="button" data-action="cancel-quit">No, stay</button>
+            <button class="dialog-button" type="button" data-action="confirm-quit">Yes, leave</button>
         </div>
     </dialog>
 
